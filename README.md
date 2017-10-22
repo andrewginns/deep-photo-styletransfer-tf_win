@@ -1,6 +1,6 @@
 # deep-photo-styletransfer-tf
 
-This is a pure Tensorflow implementation of [Deep Photo Styletransfer](https://arxiv.org/abs/1703.07511), the torch implementation could be found [here](https://github.com/luanfujun/deep-photo-styletransfer)
+This is a Windows fork of the [Linux based pure Tensorflow implementation](https://github.com/LouieYang/deep-photo-styletransfer-tf) of [Deep Photo Styletransfer](https://arxiv.org/abs/1703.07511), the torch implementation could be found [here](https://github.com/luanfujun/deep-photo-styletransfer). This adds specific instructions for Windows users and header files to allow usage of original Linux specific code.
 
 This implementation support [L-BFGS-B](https://www.tensorflow.org/api_docs/python/tf/contrib/opt/ScipyOptimizerInterface) (which is what the original authors used) and [Adam](https://www.tensorflow.org/api_docs/python/tf/train/AdamOptimizer) in case the ScipyOptimizerInterface incompatible when Tensorflow upgrades to higher version.
 
@@ -18,16 +18,32 @@ Additionally, there is no dependency on MATLAB thanks to another [repository](ht
 
 ## Setup
 ### Dependencies
+* [CUDA 8.0GA2](https://developer.nvidia.com/cuda-toolkit-archive)
+* [cuDNN 6.0 for CUDA 8.0](https://developer.nvidia.com/rdp/cudnn-download)
+* [Visual Studio 15/15 Community](https://www.visualstudio.com/vs/older-downloads/)
+* [Anaconda Python](https://www.continuum.io/anaconda-overview
 * [Tensorflow](https://www.tensorflow.org/)
 * [Numpy](www.numpy.org/)
 * [Pillow](https://pypi.python.org/pypi/Pillow/)
 * [Scipy](https://www.scipy.org/)
 * [PyCUDA](https://pypi.python.org/pypi/pycuda) (used in smooth local affine, tested on CUDA 8.0)
 
-***It is recommended to use [Anaconda Python](https://www.continuum.io/anaconda-overview), since you only need to install Tensorflow and PyCUDA manually to setup. The CUDA is optional but really recommended***
-
 ### Download the VGG-19 model weights
 The VGG-19 model of tensorflow is adopted from [VGG Tensorflow](https://github.com/machrisaa/tensorflow-vgg) with few modifications on the class interface. The VGG-19 model weights is stored as .npy file and could be download [here](https://drive.google.com/file/d/0BxvKyd83BJjYY01PYi1XQjB5R0E/view?usp=sharing). After downloading, copy the weight file to the **./project/vgg19** directory
+
+### Setting up instructions
+* Install CUDA 8.0
+* Copy folders from cuDNN 6.0 to CUDA 8.0 path
+* Launch anaconda prompt
+* Install [tensorflow](https://www.tensorflow.org/install/install_windows). GPU version recommended, follow instructions for install via anaconda.
+* Activate the environment - activate env-name
+* Install [PyCUDA](http://www.lfd.uci.edu/~gohlke/pythonlibs/#pycuda) - pip install ./path/to/pycuda.whl
+* Install Pillow - conda install pillow
+* Install SciPy - conda install scipy
+* Install Visual Studio with C++ libraries
+* Add Visual Studio to system path
+* Add getopt.h and unistd.h to C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\include
+* Try the example below
 
 ## Usage
 ### Basic Usage
@@ -103,11 +119,13 @@ Here are more results from tensorflow algorithm (from left to right are input, s
 
 ## Acknowledgement
 
-* This work was done when Yang Liu was a research intern at *Alibaba-Zhejiang University Joint Research Institute of Frontier Technologies*, under the supervision of [Prof. Mingli Song](http://person.zju.edu.cn/en/msong) and [Yongcheng Jing](http://yongchengjing.com/).
+* This Windows modification was done when Andrew Ginns was a masters student at the *University of Bristol*
 
-* Our tensorflow implementation basically follows the [torch code](https://github.com/luanfujun/deep-photo-styletransfer).
+* Tensorflow code was done when Yang Liu was a research intern at *Alibaba-Zhejiang University Joint Research Institute of Frontier Technologies*, under the supervision of [Prof. Mingli Song](http://person.zju.edu.cn/en/msong) and [Yongcheng Jing](http://yongchengjing.com/).
 
-* We use [martinbenson](https://github.com/martinbenson)'s [python code](https://github.com/martinbenson/deep-photo-styletransfer/blob/master/deep_photo.py) to compute Matting Laplacian.
+* The tensorflow implementation basically follows the [torch code](https://github.com/luanfujun/deep-photo-styletransfer).
+
+* Uses [martinbenson](https://github.com/martinbenson)'s [python code](https://github.com/martinbenson/deep-photo-styletransfer/blob/master/deep_photo.py) to compute Matting Laplacian.
 
 ## Citation
 If you find this code useful for your research, please cite:
@@ -122,5 +140,20 @@ If you find this code useful for your research, please cite:
 }
 ```
 
-## Contact
+If you find this modification useful, please cite:
+```
+@misc{YangPhotoStyle2017-AndrewWindowsPort,
+  author = {Andrew Ginns},
+  title = {deep-photo-style-transfer-tf},
+  publisher = {GitHub},
+  organization={University of Bristol},
+  year = {2017},
+  howpublished = {\url{https://github.com/andrewginns/deep-photo-styletransfer-tf}}
+}
+```
+
+## Original Code Contact
 Feel free to contact me if there is any question (Yang Liu lyng_95@zju.edu.cn).
+
+## Windows modification Contact
+Please contact me for issues pertaining to running on Windows (Andrew Ginns ag17634@my.bristol.ac.uk)
