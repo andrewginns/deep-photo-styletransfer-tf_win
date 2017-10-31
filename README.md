@@ -11,6 +11,7 @@ Additionally, there is no dependency on MATLAB thanks to another [repository](ht
 <p align="center">
     <img src="./examples/hk_parli_style2x_wf.png" width="512"/>
     <img src="./examples/hk_800.png" width="290"/>
+    <img src="./examples/parli_400.png" width="290"/>
 </p>
 
 ## Disclaimer
