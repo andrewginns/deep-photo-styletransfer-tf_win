@@ -9,8 +9,8 @@ This implementation may seem to be a little bit simpler thanks to Tensorflow's [
 Additionally, there is no dependency on MATLAB thanks to another [repository](https://github.com/martinbenson/deep-photo-styletransfer/blob/master/deep_photo.py) computing Matting Laplacian Sparse Matrix. Below is example of transferring the photo style to another photograph.
 
 <p align="center">
-    <img src="./some_results/best5.png" width="512"/>
-    <img src="./examples/readme_examples/intar5.png" width="290"/>
+    <img src="./examples/hk_parli_style2x_wf.png" width="512"/>
+    <img src="./examples/hk_800.png" width="290"/>
 </p>
 
 ## Disclaimer
